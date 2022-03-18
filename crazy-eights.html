@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crazy Eights</title>
+    <script src="https://unpkg.com/konva@8.3.2/konva.min.js"></script>
+</head>
+<body>
+    <div id="konvaCanvas"></div>
+    <script src="view/grid.js"></script>
+    <script src="view/load.js"></script>
+    <script src="view/render.js"></script>
+    <script src="model.js"></script>
+    <script src="controller/event-handlers.js"></script>
+    <script src="controller/game-logic.js"></script>
+    <script src="controller/helpers.js"></script>
+    <script>
+        'use strict'
+        
+        loadImages().then(function() {
+            initModel();
+            render();
+        })
+
+    </script>
+</body>
+</html>
