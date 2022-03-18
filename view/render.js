@@ -51,11 +51,6 @@ function renderComputerHand() {
             image: image
         })
         layer.add(cardImage)
-        if (i == model.compActiveCardIndex) {
-            setTimeout(function() { 
-                animateComputerPlay(cardImage) 
-            }, 500)
-        }
     }
 }
 
