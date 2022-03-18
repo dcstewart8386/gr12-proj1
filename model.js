@@ -6,7 +6,6 @@ let model = {
     compHand: [],
     discardPile: [],
     state: "playerTurn",
-    compActiveCardIndex: -1
 }
 
 // -------- Functions to initialize the model and the beginning of the game -----------//

@@ -18,7 +18,6 @@ function render() {
     renderComputerHand()
     renderDiscardPile()
     renderDeck()
-
 }
 
 

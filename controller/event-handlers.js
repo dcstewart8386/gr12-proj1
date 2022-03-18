@@ -11,8 +11,8 @@ function handleDragCardEnd(cardImage, handIndex) {
 
     if (isOverDiscardPile(cardImage) && isPlayerMoveValid(handIndex)) {
         playerPlay(handIndex)
+        setTimeout(handleComputerTurn, 500)
         render()
-        setTimeout(startComputerTurn, 500)
     }
     else {
         let tween = new Konva.Tween({
@@ -32,5 +32,10 @@ function handleDeckClick() {
         return;
 
     dealCardToPlayer()
+    render()
+}
+
+function handleComputerTurn() {
+    compPlay()
     render()
 }
