@@ -21,7 +21,6 @@ function render() {
     renderDeck()
 }
 
-
 function renderPlayerHand() {
     for (let i = 0; i < model.playerHand.length; i++) {
         let cardImage = new Konva.Image({

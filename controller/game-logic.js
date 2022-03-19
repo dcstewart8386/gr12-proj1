@@ -1,13 +1,26 @@
-
-
 function dealCardToPlayer() {
     let card = model.deck.pop()
+
+    // All JavaScript arrays have a built-in "push" method that will add an item to
+    // the end of the array. This is how we handle adding a card to a player's hand
     model.playerHand.push(card)
 }
 
+// This function will take one parameter, indicating the index of the card (within the
+// player's hand) that the player has chosen to play. The card will be removed from the
+// player's hand and added to the discard pile.
 function playerPlay(handIndex) {
+
+    // All JavaScript arrays have a built-in "splice" method that will remove and return a 
+    // specific chunk of the array. The first parameter indicates where to start the 
+    // splice, and the second parameter indicates the length of the splice. In this case,
+    // we want to remove the 1 item at "handIndex".
     let cardArr = model.playerHand.splice(handIndex, 1)
+
+    // The splice will have returned an array of length 1, containing the card that was spliced.
+    // This next line will give us a reference to that card.
     let card = cardArr[0]
+    
     model.discardPile.push(card)
     model.state = "compTurn"
 }

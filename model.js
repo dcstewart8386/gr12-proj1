@@ -14,7 +14,7 @@ function initModel() {
     let sortedDeck = createCardObjects()
     model.deck = shuffle(sortedDeck)
 
-    // Deal the cards
+    // Deal the cards.
     // Arrays in JavaScript have a pop() method that will remove and return the last
     // item in the array. This works well for transferring a card from the deck to a
     // player's hand.

@@ -1,10 +1,11 @@
-
-
 function handleDragCardStart(event) {
-    let cardImage = event.target
-    cardImage.moveToTop();
-    cardImage.prevX = cardImage.x()
-    cardImage.prevY = cardImage.y()
+    let cardImage = event.target // Gets a reference to the card being dragged
+    cardImage.moveToTop(); // Make sure our card stays above any other cards currently in play
+
+    // We need to save the location of the card when the drag begins, so that if the player 
+    // drags it to an invalid location we know where to move it back to
+    cardImage.dragStartX = cardImage.x()
+    cardImage.dragStartY = cardImage.y()
 }
 
 function handleDragCardEnd(cardImage, handIndex) {
@@ -17,8 +18,8 @@ function handleDragCardEnd(cardImage, handIndex) {
     else {
         let tween = new Konva.Tween({
             node: cardImage,
-            x: cardImage.prevX,
-            y: cardImage.prevY,
+            x: cardImage.dragStartX,
+            y: cardImage.dragStartY,
             duration: 0.2
         })
         tween.play()
