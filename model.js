@@ -8,13 +8,16 @@ let model = {
     state: "playerTurn",
 }
 
-// -------- Functions to initialize the model and the beginning of the game -----------//
+// -------- Functions to initialize the model at the beginning of the game -----------//
 
 function initModel() {
     let sortedDeck = createCardObjects()
     model.deck = shuffle(sortedDeck)
 
     // Deal the cards
+    // Arrays in JavaScript have a pop() method that will remove and return the last
+    // item in the array. This works well for transferring a card from the deck to a
+    // player's hand.
     for (let i = 0; i < 8; i++) {
         model.playerHand[i] = model.deck.pop()
         model.compHand[i] = model.deck.pop()
@@ -24,6 +27,7 @@ function initModel() {
     model.discardPile[0] = model.deck.pop()
 }
 
+// This function will create an array representing all 52 cards in a standard deck
 function createCardObjects() {
     let cards = []
     for (let i = 1; i <= 13; i++) {

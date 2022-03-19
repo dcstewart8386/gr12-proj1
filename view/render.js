@@ -5,14 +5,15 @@ let stage = new Konva.Stage({
     height: window.innerHeight
 });
 
-let layer;
+let layer
+
+// This is the main function that will cause the full game to render. It will call a number
+// of more specific functions to render the various components of the game.
 function render() {
-    stage.destroyChildren()
-    layer = new Konva.Layer()
-    stage.add(layer)
-    
-    // Add a grid while developing
-    addGrid(Konva, layer) 
+    stage.destroyChildren() // Remove all objects from the stage
+    layer = new Konva.Layer() // Create a fresh layer
+    stage.add(layer) // Add the new layer to the stage
+    addGrid(Konva, layer) // Can be removed/commented when game is complete
 
     renderPlayerHand()
     renderComputerHand()
@@ -41,14 +42,10 @@ function renderPlayerHand() {
 
 function renderComputerHand() {
     for (let i = 0; i < model.compHand.length; i++) {
-        let image = rawCardBackImage
-        if (i == model.compActiveCardIndex) {
-            image = getRawCardImage(model.compHand[i])
-        }
         let cardImage = new Konva.Image({
             x: i*80,
             y: 500,
-            image: image
+            image: rawCardBackImage
         })
         layer.add(cardImage)
     }
@@ -75,55 +72,3 @@ function renderDeck() {
     cardImage.on('click', handleDeckClick)
     layer.add(cardImage)
 }
-
-function animateComputerPlay(cardImage) {
-    cardImage.moveToTop()
-    let tween = new Konva.Tween({
-        node: cardImage,
-        x: 250,
-        y: 250,
-        duration: 0.5,
-        onFinish: endComputerTurn
-    })
-    tween.play()
-}
-
-function animateDealToComputer() {
-    let cardImage = new Konva.Image({
-        x: 350,
-        y: 250,
-        image: rawCardBackImage
-    })
-    layer.add(cardImage)
-
-    cardImage.moveToTop()
-    let tween = new Konva.Tween({
-        node: cardImage,
-        x: model.compHand.length * 80,
-        y: 500,
-        duration: 0.5,
-        onFinish: endComputerDeal
-    })
-    tween.play()
-}
-
-// function renderDealPlayerCard(layer) {
-//     let card = model.deck[0]
-//     let cardImage = new Konva.Image({
-//         x: 370,
-//         y: 230,
-//         image: getRawCardImage(card.value, card.suit),
-//         draggable: true
-//     })
-//     layer.add(cardImage)
-//     cardImage.moveToTop()
-
-//     let tween = new Konva.Tween({
-//         node: cardImage,
-//         x: model.playerHand.length * 80,
-//         y: 0,
-//         duration: 0.5,
-//         onFinish: dealCardToPlayer
-//     })
-//     tween.play()
-// }
