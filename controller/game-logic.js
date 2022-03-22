@@ -57,7 +57,7 @@ function compTryPlay() {
 }
 
 function compUseCard(i) {
-    let cardArr = model.compHand.splice(model.compActiveCardIndex, 1)
+    let cardArr = model.compHand.splice(i, 1)
     let card = cardArr[0]
     model.discardPile.push(card)
     model.state = "playerTurn"
